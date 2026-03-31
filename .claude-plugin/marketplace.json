@@ -1,0 +1,13 @@
+{
+  "name": "clamux",
+  "owner": {
+    "name": "davhao"
+  },
+  "plugins": [
+    {
+      "name": "clamux",
+      "description": "macOS notifications for inactive tmux windows and auto-rename windows based on conversation topic",
+      "source": "./"
+    }
+  ]
+}
