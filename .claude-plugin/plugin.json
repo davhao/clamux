@@ -1,0 +1,6 @@
+{
+  "name": "clamux",
+  "version": "1.0.0",
+  "description": "macOS notifications for inactive tmux windows and auto-rename windows based on conversation topic",
+  "hooks": "./hooks/hooks.json"
+}
