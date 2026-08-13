@@ -1,5 +1,5 @@
 {
   "name": "clamux",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "macOS notifications for inactive tmux windows and auto-rename windows based on conversation topic"
 }

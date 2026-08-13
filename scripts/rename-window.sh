@@ -5,9 +5,12 @@
 touch "/tmp/claude-tmux-title-${TMUX_PANE}"
 "$(dirname "$0")/setup-hooks.sh"
 win=$(tmux display-message -t "$TMUX_PANE" -p '#{window_id}' 2>/dev/null) || exit 0
-msg=$(jq -r '.prompt')
+input=$(cat)
+msg=$(printf '%s' "$input" | jq -r '.prompt')
+sid=$(printf '%s' "$input" | jq -r '.session_id // empty' | cut -c1-8)
 title=$(cd /tmp && printf 'Generate a short 2-4 word title for the following chat message. Output ONLY the title, nothing else.\n\n%s' "$msg" | claude --print --model haiku 2>/dev/null | tr -d '"' | head -1 | cut -c1-30)
 if [ -n "$title" ]; then
+  [ -n "$sid" ] && title="$title $sid"
   tmux set-window-option -t "$win" automatic-rename off
   tmux set-window-option -t "$win" allow-rename off
   tmux rename-window -t "$win" "$title"
